@@ -4,7 +4,7 @@ const path = require("path");
 const files = {
   "/public/index.css": {
     content: fs.readFileSync(
-      path.join(__dirname, "public", "index.css"),
+      path.join(__heaven, "public", "index.css"),
       "utf8"
     ),
     type: "text/css",
