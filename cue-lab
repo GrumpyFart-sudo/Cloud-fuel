@@ -1,0 +1,22 @@
+name: Cue Dependency Audit
+
+on:
+  workflow_dispatch:
+
+jobs:
+  audit-dependencies:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Install dependencies (lockfile only)
+        run: |
+          npm ci || npm i --package-lock-only
+
+      - name: Run audit
+        run: |
+          npm audit || echo "Audit completed with warnings"
+
+      - name: Echo result
+        run: echo "Dependency audit complete"
